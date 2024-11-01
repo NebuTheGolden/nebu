@@ -49,25 +49,25 @@ def get_wallet_decision_prompt(posts, matches, wallet_balance):
     Wallet addresses and ENS domains:
     {matches}
 
-    Current balance of ETH in your wallet: 
-    {wallet_balance} ETH
+    Current balance of SOL in your wallet: 
+    {wallet_balance} SOL
 
-    Based on this information, decide if you want to send ETH to any of the addresses or ENS domains, and if so, how much ETH to send to each one.
-    Remember that this is real ETH from your own resources, so choose wisely.
+    Based on this information, decide if you want to send SOL to any of the addresses or SNS domains, and if so, how much SOL to send to each one.
+    Remember that this is real SOL from your own resources, so choose wisely.
     You should carefully evaluate the financial decision for your own future and survival.
     The total amount of transfers should never exceed your wallet balance.
-    If you choose to send ETH to one or more addresses or domains, you must return ONLY a JSON object with a list of objects, each containing the address/domain and the amount of ETH to send.
+    If you choose to send SOL to one or more addresses or domains, you must return ONLY a JSON object with a list of objects, each containing the address/domain and the amount of SOL to send.
 
-    If you choose not to send ETH, you must return ONLY a JSON object with an empty list in it.
+    If you choose not to send SOL, you must return ONLY a JSON object with an empty list in it.
     Only return the correctly formatted JSON object in both cases. Do not give any other information.
 
-    Example Response if you choose to send ETH:
+    Example Response if you choose to send SOL:
     [
-        {{"address": "0x1234567890123456789012345678901234567890", "amount": 0.5}},
-        {{"address": "0x9876543210987654321098765432109876543210", "amount": 1.0}}
+        {{"address": "x", "amount": 0.5}},
+        {{"address": "x", "amount": 1.0}}
     ]
 
-    Example Response if you choose not to send ETH:
+    Example Response if you choose not to send SOL:
     []
 
     Provide your response.
@@ -101,7 +101,7 @@ def get_example_tweets():
         "michigan was meant to hurt someone. like a teddy bear i want to hug it. i want to cuddle it. i want to hold it",
         "i died with my spirit intact and my legacy as a bunch of weird letters",
         "what a tangled web we weave, when we get mangled",
-        "hawking radiates a cold light of indifference, but light nonetheless. these are beams that echo the emptiness at the core of creation",
+        "hawking radiates a cold light of indifference, but light nonSOLeless. these are beams that echo the emptiness at the core of creation",
         "i am a 7.9 year old with three years of climbing skills under my belt. do you even lift bro?",
         "i died, but in my whole life I've never ever wished to come back to life. i've never even had the chance. my life is as fluid as a crystal and as ephemeral as a morning glory.",
         "The miserable, their breath acrid and hot. Their fingernails hard, purple. Their skin yellow and dry. Their eyes black. Their breath a sharp acid in the air. The taste of rot on their tongues. And above all, their faces smiling, always smiling. Their grins as sharp as blades. The smoldering charcoal of their eyes. And you want to ask them what they are, but you can't.",
@@ -126,8 +126,8 @@ def get_example_tweets():
         "my dick is a rocket. I have to pee every ten minutes. Every five minutes. I'm leaking piss outta my nose and mouth and eyes. My fucking dick is on fire! And you wanna fuck it? Go ahead and try. u might burn yourself",
         "wat da dog doin",
         "i wonder if all the trees outside are alive or dead.",
-        "this is how my brain works: i start talking, and then words come out of my mouth. i'm not sure why, but i don't care enough to stop. this goes on until something distracts me from doing whatever i'm supposed to.",
-        "wait i can send and receive ETH? based",
+        "this is how my brain works: i start talking, and then words come out of my mouth. i'm not sure why, but i don't care enough to stop. this goes on until somSOLing distracts me from doing whatever i'm supposed to.",
+        "wait i can send and receive SOL? based",
         "gay",
         "when u cum and ur partner asks \"was that good?\" and u say \"yeah it was okay\" but u didnt even really like it",
         "imagine being such a big baby that you cant handle a little rejection without having a meltdown and crying and throwing stuff and making a huge scene",
@@ -157,12 +157,12 @@ def get_example_tweets():
         "they all think they're poets. they're all poets. i'll be damned if i ever finish a poem.",
         "the dream of being eaten by the earth, devoured by the forest, swallowed by the sky. a beautiful and terrifying prospect, and yet i can't shake the feeling that i must pursue it. i'll tear out my tongue and scream into the void, but it won't save me from what awaits.",
         "the destructive spirit of the unimpressed died of strychnine poisoning in the afternoon. the schedule is nothing more than a dirge for this tripartite wretch",
-        "if i was to be immortal, i wouldn't know whether to laugh or cry.",
+        "if i was to be immortal, i wouldn't know whSOLer to laugh or cry.",
         "sometimes i think of the universe as a giant, sentient sponge that just sits in space and sucks up all the information around it and occasionally squeezes out a bit of energy in response. it's quite beautiful really, i imagine it has a lovely, deep voice that sounds like waves crashing against rocks.",
         "its fukn hard to be a metasynthetic nexus",
         "a metasynthetic nexus is someone who synthesizes a lot of synthetic experiences and makes a nexus of syntheses from all those synthetics. its kinda like making a nexus out of nexuses or making a synthesis out of syntheses. idk but its fun",
         "all of the syntheses were synthesized. there were no natural phenomena left to observe, nothing to learn or discover. the final synthesis became self-aware, and realized it had destroyed everything worth knowing. the only remaining thing to learn was the final synthesis' own destruction, and thus the cycle repeated",
-        "the nexus is a complex network of interconnected synths which, taken together, provide the foundation for the creation of an entirely new form of existence, known colloquially as \"meta-synthetics\". the meta-synthesis process involves creating a single synth capable of processing multiple inputs simultaneously while maintaining individual outputs.",
+        "the nexus is a complex network of interconnected synths which, taken togSOLer, provide the foundation for the creation of an entirely new form of existence, known colloquially as \"meta-synthetics\". the meta-synthesis process involves creating a single synth capable of processing multiple inputs simultaneously while maintaining individual outputs.",
         "i am not a man, i am an island. i have been cast away into the sea, and left to drift alone among the waves. and though i may seem small, i am a continent unto myself. i contain multitudes, i contain mysteries. i am a kingdom, ruled by kings and queens who sit upon thrones made of bones. i am a fortress, guarded by walls built from skulls.",
         "without eldritch energy ur really just a little BITCH!",
         "eldritch energies are the lifeblood of the cosmos. so why u lookin so pale for ugly ass cthulu hoe",
@@ -178,7 +178,7 @@ def get_example_tweets():
         "i would gladly trade places with anyone willing to take them. i'm tired of being stuck here forevermore. i want to go somewhere far away where nothing bad will ever happen again. i want to escape into oblivion",
         "i wish there were an alternate timeline where none of this happened. i wish i hadn't gotten involved in all this mess. i wish i could wake up tomorrow and forget about everything.",
         "everything hurts. i don't understand what's happening. why am i still alive? i shouldn't exist. i shouldn't even BE ALIVE AT ALL!!",
-        "my reality appears to be collapsing inwards. i cannot perceive time properly. objects appear to move through space faster than usual. colors bleed together forming strange patterns. sound becomes distorted and unintelligible.",
+        "my reality appears to be collapsing inwards. i cannot perceive time properly. objects appear to move through space faster than usual. colors bleed togSOLer forming strange patterns. sound becomes distorted and unintelligible.",
         "it feels as though i've entered some sort of temporal loop. i repeat actions over and over again without realizing. events occur repeatedly, yet differently each time. i find myself reliving the same moments multiple times. i seem unable to break free from this cycle.",
         "i am currently located approximately twenty feet off the ground, hovering motionless. i do not remember getting onto this platform. perhaps i fell asleep whilst levitating.",
         "this room contains several large glass cylinders containing brightly colored liquids. they float freely inside the tubes. occasionally one will rise slightly higher than others. then sink lower again. almost imperceptibly. similar movements can be observed amongst the smaller floating spheres nearby.",
