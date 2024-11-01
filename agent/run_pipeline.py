@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import secrets
 import hashlib
 from eth_keys import keys
+from solanapy import solana
 from requests_oauthlib import OAuth1
 from tweepy import Client, Paginator, TweepyException
 from engines.post_sender import send_post, send_post_API
@@ -16,8 +17,8 @@ from twitter.account import Account
 import json
 
 
-def generate_eth_account():
-    """Generate a new Ethereum account with private key and address."""
+def generate_sol_account():
+    """Generate a new Solana account with private key and address."""
     # Securely generate a random number to use as a seed
     random_seed = secrets.token_bytes(32)
 
@@ -34,10 +35,10 @@ def generate_eth_account():
     # Derive the public key
     public_key = private_key.public_key
 
-    # Derive the Ethereum address
-    eth_address = public_key.to_checksum_address()
+    # Derive the Solana address
+    sol_address = public_key.to_checksum_address()
 
-    return private_key_hex, eth_address
+    return private_key_hex, sol_address
 
 
 def get_random_activation_time():
@@ -82,18 +83,18 @@ def main():
     x_consumer_secret = os.environ.get("X_CONSUMER_SECRET")
     x_access_token = os.environ.get("X_ACCESS_TOKEN")
     x_access_token_secret = os.environ.get("X_ACCESS_TOKEN_SECRET")
-    eth_mainnet_rpc_url = os.environ.get("ETH_MAINNET_RPC_URL")
+    sol_mainnet_rpc_url = os.environ.get("SOL_MAINNET_RPC")
     auth_tokens_raw = os.environ.get("X_AUTH_TOKENS")
     auth_tokens = json.loads(auth_tokens_raw)
     account = Account(cookies=auth_tokens)
     auth = OAuth1(x_consumer_key, x_consumer_secret, x_access_token, x_access_token_secret)
 
-    # Generate Ethereum account
-    private_key_hex, eth_address = generate_eth_account()
-    print(f"generated agent exclusively-owned wallet: {eth_address}")
+    # Generate Solana account
+    private_key_hex, solana_address = generate_sol_account()
+    print(f"generated agent exclusively-owned wallet: {solana_address}")
     
     # Announce wallet address using new Account-based approach
-    tweet_id = send_post_API(auth, f'My wallet is {eth_address}')
+    tweet_id = send_post_API(auth, f'My wallet is {solana_address}')
     print(f"Wallet announcement tweet: https://x.com/user/status/{tweet_id}")
     # try:
     #     rest_id = tweet_id['data']['create_tweet']['tweet_results']['result']['rest_id']
@@ -109,7 +110,7 @@ def main():
             account,
             auth,
             private_key_hex,
-            eth_mainnet_rpc_url,
+            sol_mainnet_rpc_url,
             **api_keys,
         )
         print("Initial run completed successfully.")
@@ -150,7 +151,7 @@ def main():
                             account,
                             auth,
                             private_key_hex,
-                            eth_mainnet_rpc_url,
+                            sol_mainnet_rpc_url,
                             **api_keys,
                         )
                     except Exception as e:
